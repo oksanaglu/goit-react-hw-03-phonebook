@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Form = styled.form`
-  max-width: 300px;
+  max-width: 310px;
   border-radius: 5px;
   border: 1px solid black;
   padding: 10px;

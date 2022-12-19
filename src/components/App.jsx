@@ -68,12 +68,31 @@ export class App extends React.Component {
 
 
 
+
+  componentDidMount() {
+    const contacts = localStorage.getItem('contacts');
+    const parsetContacts = JSON.parse(contacts);
+    if (parsetContacts) {
+      this.setState({ contacts: parsetContacts });
+    };   
+  };
+
+
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    };
+  };
+
+
+
   render() {
     const { filter } = this.state;
     const visibleContacts = this.getContacts();
 
     return (
-      <>
+     
           <Container>
         <Section title="Phonebook">
           <Title1>Phonebook</Title1>
@@ -88,7 +107,7 @@ export class App extends React.Component {
           />
         </Section>
       </Container>
-      </>
+   
     )
   }
 };
